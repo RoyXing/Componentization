@@ -1,0 +1,34 @@
+ext {
+    // 定义一个项目全局变量isRelease，用于动态切换：组件化模式 / 集成化模式
+    // false: 组件化模式（子模块可以独立运行），true ：集成化模式（打包整个项目apk，子模块不可独立运行）
+    isRelease = true
+
+    // 建立Map存储，对象名、key可以自定义
+    androidId = [
+            compileSdkVersion: 28,
+            buildToolsVersion: "28.0.3",
+            minSdkVersion    : 21,
+            targetSdkVersion : 28,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    appId = [
+            "app"     : "com.xingzy",
+            "order"   : "com.order",
+            "personal": "com.personal"
+    ]
+
+    url = [
+            debug  : "",
+            release: ""
+    ]
+
+    supportLibrary = "28.0.0"
+    dependencies = [
+            appcompat   : "com.android.support:appcompat-v7:${supportLibrary}",
+            recyclerview: "com.android.support:recyclerview-v7:${supportLibrary}",
+            constraint  : "com.android.support.constraint:constraint-layout:1.1.3",
+    ]
+
+}
