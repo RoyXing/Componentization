@@ -1,4 +1,4 @@
-package com.personal;
+package com.xingzy;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,15 +8,13 @@ import com.annotation.ARouter;
 
 /**
  * @author roy.xing
- * @date 2019-07-17
+ * @date 2019-07-26
  */
-@ARouter(path = "/personal/PersonalActivity")
-public class PersonalActivity extends AppCompatActivity {
+@ARouter(path = "/app/SecondActivity")
+public class SecondActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.personal_activity);
     }
-
 }

@@ -8,20 +8,24 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.annotation.ARouter;
+import com.annotation.Parameter;
 import com.common.RecordPathManager;
 
 /**
  * @author roy.xing
  * @date 2019-07-17
  */
-@ARouter(path = "order/OrderActivity")
+@ARouter(path = "/order/OrderActivity")
 public class OrderActivity extends AppCompatActivity {
+
+    @Parameter
+    String name;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_activity);
-        String name = getIntent().getStringExtra("name");
+        new OrderActivity$$Parameter().loadParameter(this);
         Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
     }
 
@@ -36,7 +40,6 @@ public class OrderActivity extends AppCompatActivity {
         Class<?> targetClass = RecordPathManager.getTargetClass("personal", "PersonalActivity");
 
         startActivity(new Intent(this, targetClass));
-
 
 
     }

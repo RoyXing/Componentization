@@ -38,7 +38,7 @@ import javax.tools.JavaFileObject;
 // AutoService则是固定的写法，加个注解即可
 // 通过auto-service中的@AutoService可以自动生成AutoService注解处理器，用来注册
 // 用来生成 META-INF/services/javax.annotation.processing.Processor 文件
-@AutoService(Processor.class)
+//@AutoService(Processor.class)
 @SupportedAnnotationTypes({"com.annotation.ARouter"})
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 @SupportedOptions("content")
