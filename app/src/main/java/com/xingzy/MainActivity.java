@@ -2,49 +2,50 @@ package com.xingzy;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.annotation.ARouter;
-import com.annotation.model.RouterBean;
-import com.arouter.api.ARouterLoadPath;
-import com.order.OrderActivity;
-import com.personal.PersonalActivity;
-import com.xingzy.debug.ARouter$$Group$$order;
-import com.xingzy.debug.ARouter$$Path$$order;
-
-import java.util.Map;
+import com.annotation.Parameter;
+import com.arouter.api.ParameterManager;
+import com.arouter.api.RouterManager;
+import com.common.OrderDrawable;
 
 @ARouter(path = "/app/MainActivity")
 public class MainActivity extends AppCompatActivity {
+
+    @Parameter(name = "/order/getDrawable")
+    OrderDrawable orderDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ParameterManager.getInstance().loadParameter(this);
+
+        findViewById(R.id.imageView).setBackgroundResource(orderDrawable.getDrawable());
     }
 
     public void order(View view) {
-        ARouter$$Group$$order loadGroup = new ARouter$$Group$$order();
-        Map<String, Class<? extends ARouterLoadPath>> map = loadGroup.loadGroup();
-        Class<? extends ARouterLoadPath> aRouterLoadPath = map.get("order");
-        try {
-            ARouter$$Path$$order order = (ARouter$$Path$$order) aRouterLoadPath.newInstance();
-            Map<String, RouterBean> loadPath = order.loadPath();
-            RouterBean bean = loadPath.get("order/OrderActivity");
-
-            Intent intent = new Intent();
-            intent.setClass(this, bean.getClazz());
-            intent.putExtra("name", "xingzy");
-            startActivity(intent);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        }
+        RouterManager.getInstance()
+                .build("/order/OrderActivity")
+                .withString("name", "xingzy")
+                .navigation(this, 163);
     }
 
     public void personal(View view) {
-        startActivity(new Intent(this, PersonalActivity.class));
+        RouterManager.getInstance()
+                .build("/personal/PersonalActivity")
+                .navigation(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 163 && resultCode == 999) {
+            Log.e("roy", data.getStringExtra("call"));
+        }
     }
 }

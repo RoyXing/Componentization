@@ -39,10 +39,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":common")
+    annotationProcessor project(':arouter_compiler')
 
     support.each { k, v -> implementation v }
     // 依赖注解处理器
-    annotationProcessor project(':arouter_compiler')
     if (isRelease) {
         implementation project(":order")
         implementation project(":personal")

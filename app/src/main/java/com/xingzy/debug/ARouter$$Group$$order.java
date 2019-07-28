@@ -1,7 +1,7 @@
 package com.xingzy.debug;
 
-import com.arouter.api.ARouterLoadGroup;
-import com.arouter.api.ARouterLoadPath;
+import com.arouter.api.core.ARouterLoadGroup;
+import com.arouter.api.core.ARouterLoadPath;
 
 import java.util.HashMap;
 import java.util.Map;

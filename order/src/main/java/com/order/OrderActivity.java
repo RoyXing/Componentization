@@ -1,6 +1,5 @@
 package com.order;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +8,8 @@ import android.widget.Toast;
 
 import com.annotation.ARouter;
 import com.annotation.Parameter;
-import com.common.RecordPathManager;
+import com.arouter.api.ParameterManager;
+import com.arouter.api.RouterManager;
 
 /**
  * @author roy.xing
@@ -25,22 +25,20 @@ public class OrderActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_activity);
-        new OrderActivity$$Parameter().loadParameter(this);
+        //懒加载的方式，跳转哪里加载哪个类
+        ParameterManager.getInstance().loadParameter(this);
         Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
     }
 
+    public void call(View view) {
+        RouterManager.getInstance().build("/app/MainActivity")
+                .withResultString("call", "roy")
+                .navigation(this, 999);
+    }
+
     public void personal(View view) {
-//        try {
-//            Class<?> clazz = Class.forName("com.personal.PersonalActivity");
-//            startActivity(new Intent(this, clazz));
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-
-        Class<?> targetClass = RecordPathManager.getTargetClass("personal", "PersonalActivity");
-
-        startActivity(new Intent(this, targetClass));
-
-
+        RouterManager.getInstance()
+                .build("/personal/PersonalActivity")
+                .navigation(this);
     }
 }

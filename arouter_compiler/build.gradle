@@ -3,7 +3,6 @@ apply plugin: 'java-library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-
     // 注册注解，并对其生成META-INF的配置信息，rc2在gradle5.0后有坑
     // As-3.2.1 + gradle4.10.1-all + auto-service:1.0-rc2
     // implementation 'com.google.auto.service:auto-service:1.0-rc2'

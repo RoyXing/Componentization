@@ -1,4 +1,4 @@
-package com.arouter.api;
+package com.arouter.api.core;
 
 import java.util.Map;
 

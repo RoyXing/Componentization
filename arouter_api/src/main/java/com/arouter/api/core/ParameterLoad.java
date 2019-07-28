@@ -1,4 +1,4 @@
-package com.arouter.api;
+package com.arouter.api.core;
 
 /**
  * @author roy.xing

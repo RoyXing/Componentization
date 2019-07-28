@@ -1,7 +1,7 @@
 package com.xingzy.debug;
 
 import com.annotation.model.RouterBean;
-import com.arouter.api.ARouterLoadPath;
+import com.arouter.api.core.ARouterLoadPath;
 import com.order.OrderActivity;
 
 import java.util.HashMap;

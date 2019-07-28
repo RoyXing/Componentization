@@ -22,15 +22,20 @@ public class Constants {
     //Activity全类名
     public static final String ACTIVITY = "android.app.Activity";
 
+    // RouterManager类名
+    public static final String ROUTER_MANAGER = "RouterManager";
+
     //包名前缀封装
     public static String BASE_PACKAGE = "com.arouter.api";
     //路由组Group加载接口
-    public static final String AROUTE_GROUP = BASE_PACKAGE + ".ARouterLoadGroup";
+    public static final String AROUTE_GROUP = BASE_PACKAGE + ".core.ARouterLoadGroup";
     //路由组Group对应的详细Path加载接口
-    public static final String AROUTE_PATH = BASE_PACKAGE + ".ARouterLoadPath";
+    public static final String AROUTE_PATH = BASE_PACKAGE + ".core.ARouterLoadPath";
+
+    public static final String CALL = BASE_PACKAGE + ".core.Call";
 
     // 获取参数，加载接口
-    public static final String PARAMETER_LOAD = BASE_PACKAGE + ".ParameterLoad";
+    public static final String PARAMETER_LOAD = BASE_PACKAGE + ".core.ParameterLoad";
 
     //路由组Group,参数名
     public static final String GROUP_PARAMATER_NAME = "groupMap";
